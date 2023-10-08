@@ -1,6 +1,7 @@
 import csv
 
-with open('countries.csv', 'r') as country_list:
-    country_reader = csv.reader(country_list)
-    for row in country_reader:
+file_path = input("Enter path to a csv file: ")
+with open(file_path, 'r') as f:
+    f_reader = csv.reader(f)
+    for row in f_reader:
         print(row)
