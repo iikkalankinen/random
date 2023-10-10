@@ -15,7 +15,7 @@ def get_selection():
 def main():
     print("Let's start!\n")
     csv_file = get_file_path()
-    selection = "c"
+    selection = ""
     while (selection != "q"):
         selection = get_selection()
         match selection:
@@ -23,9 +23,14 @@ def main():
                 country = input("Enter a country to check: ")
                 with open(csv_file, 'r') as f:
                     f_reader = csv.reader(f, delimiter=";")
+                    country_found = False
                     for row in f_reader:
                         if row[1]==country:
-                            print(country + " is  on position " + row[0] + " on world countries list with the population of " + row[2] + ".")
+                            country_found = True
+                            country_specs = country + " is  on position " + row[0] + " on world countries list with the population of " + row[2] + "."
+                            print(country_specs)
+                    if not country_found:
+                        print("Didn't find country " + country + ".")
             case "b":
                 print(selection + " doesn't yet do anything.")
             case "q":
