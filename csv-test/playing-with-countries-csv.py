@@ -7,13 +7,17 @@ def get_file_path():
         file_path = input("Enter path to the countries csv file: ")
     return file_path
 
+def get_selection():
+    user_selection = ""
+    user_selection = input("Choose one\n a) Check a country's population\n q) Quit\nYour choise: ")
+    return user_selection.lower()
+
 def main():
     print("Let's start!\n")
     csv_file = get_file_path()
     selection = "c"
     while (selection != "q"):
-        selection = input("Choose one\n a) Check a country's population\n q) Quit\nYour choise: ")
-        selection = selection.lower()
+        selection = get_selection()
         match selection:
             case "a":
                 country = input("Enter a country to check: ")
