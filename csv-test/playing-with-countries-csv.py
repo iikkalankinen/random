@@ -40,7 +40,27 @@ def main():
                             country_specs = country + " is  on position " + row[0] + " on world countries list with the population of " + row[2] + "."
                             print(country_specs)
             case "b":
-                print(selection + " doesn't yet do anything.")
+                print("Let's compare populations of two countries")
+                print("Choose the first country")
+                country1 = get_country(csv_file)
+                print("Choose another country to compare with " + country1 + ".")
+                country2 = get_country(csv_file)
+                while (country1 == country2):
+                    print("Hey, choose a different country than " + country1 + "!")
+                    country2 = get_country(csv_file)
+                country1_pop = 0
+                country2_pop = 0
+                with open(csv_file, 'r') as f:
+                    f_reader = csv.reader(f, delimiter=";")
+                    for row in f_reader:
+                        if row[1]==country1:
+                            country1_pop = row[2]
+                        if row[1]==country2:
+                            country2_pop = row[2]
+                print("Population of " + country1 + "is " + country1_pop + ". " + "Population of " + country2 + "is " + country2_pop + ".")
+
+            case "c":
+                print(selection + "doesn't yet do anything.")
             case "q":
                 print("Exiting the program.")
             case _:
