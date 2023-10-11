@@ -9,8 +9,20 @@ def get_file_path():
 
 def get_selection():
     user_selection = ""
-    user_selection = input("Choose one\n a) Check a country's population\n q) Quit\nYour choise: ")
+    user_selection = input("Choose one\n a) Check a country's population\n b) Compare populations\n q) Quit\nYour choise: ")
     return user_selection.lower()
+
+def get_country(csv_file_path):
+    inputted_country = ""
+    country_found = False
+    while (country_found == False):
+        inputted_country = input("Choose a country: ")
+        with open(csv_file_path, 'r') as fil:
+            fil_reader = csv.reader(fil, delimiter=";")
+            for row in fil_reader:
+                if row[1] == inputted_country:
+                    country_found = True
+    return inputted_country
 
 def main():
     print("Let's start!\n")
@@ -20,17 +32,13 @@ def main():
         selection = get_selection()
         match selection:
             case "a":
-                country = input("Enter a country to check: ")
+                country = get_country(csv_file)
                 with open(csv_file, 'r') as f:
                     f_reader = csv.reader(f, delimiter=";")
-                    country_found = False
                     for row in f_reader:
                         if row[1]==country:
-                            country_found = True
                             country_specs = country + " is  on position " + row[0] + " on world countries list with the population of " + row[2] + "."
                             print(country_specs)
-                    if not country_found:
-                        print("Didn't find country " + country + ".")
             case "b":
                 print(selection + " doesn't yet do anything.")
             case "q":
