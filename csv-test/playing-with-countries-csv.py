@@ -51,7 +51,7 @@ def main():
                     f_reader = csv.reader(f, delimiter=";")
                     for row in f_reader:
                         if row[1]==country:
-                            country_specs = country + " is  on position " + row[0] + " on world countries list with the population of " + row[2] + "."
+                            country_specs = country + " is on position " + row[0] + " on world countries list with the population of " + row[2] + "."
                             print(country_specs)
             case "b":
                 print("Let's compare populations of two countries")
@@ -71,9 +71,18 @@ def main():
                             country1_pop = row[2]
                         if row[1]==country2:
                             country2_pop = row[2]
-                print("Population of " + country1 + "is " + country1_pop + ". " + "Population of " + country2 + "is " + country2_pop + ".")
+                print("Population of " + country1 + " is " + country1_pop + ". " + "Population of " + country2 + " is " + country2_pop + ".")
                 comparison = compare_pops(country1_pop, country2_pop)
                 print("Comparison result: " + str(comparison))
+                match comparison:
+                    case 1:
+                        print("1")
+                    case 2:
+                        print("2")
+                    case 3:
+                        print("3")
+                    case _:
+                        print("Error")
             case "c":
                 print(selection + "doesn't yet do anything.")
             case "q":
