@@ -24,17 +24,11 @@ def get_country(csv_file_path):
                     country_found = True
     return inputted_country
 def compare_pops(c1pop, c2pop):
-    c1 = c1pop.replace(" ", "")
-    c1 = c1.replace(",", "")
-    c1 = int(c1)
-    c2 = c2pop.replace(" ", "")
-    c2 = c2.replace(",", "")
-    c2 = int(c2)
-    if c1 > c2:
+    if c1pop > c2pop:
         return 1
-    if c1 < c2:
+    if c1pop < c2pop:
         return 2
-    if c1 == c2:
+    if c1pop == c2pop:
         return 3
     return 4
 
@@ -71,8 +65,14 @@ def main():
                             country1_pop = row[2]
                         if row[1]==country2:
                             country2_pop = row[2]
+                country1_pop_int = country1_pop.replace(" ", "")
+                country1_pop_int = country1_pop_int.replace(",", "")
+                country1_pop_int = int(country1_pop_int)
+                country2_pop_int = country2_pop.replace(" ", "")
+                country2_pop_int = country2_pop_int.replace(",", "")
+                country2_pop_int = int(country2_pop_int)
                 print("Population of " + country1 + " is " + country1_pop + ". " + "Population of " + country2 + " is " + country2_pop + ".")
-                comparison = compare_pops(country1_pop, country2_pop)
+                comparison = compare_pops(country1_pop_int, country2_pop_int)
                 print("Comparison result: " + str(comparison))
                 match comparison:
                     case 1:
