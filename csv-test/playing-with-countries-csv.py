@@ -77,6 +77,8 @@ def main():
                 match comparison:
                     case 1:
                         print("1")
+                        perc = country2_pop_int / country1_pop_int * 100
+                        print(perc)
                     case 2:
                         print("2")
                     case 3:
