@@ -1,4 +1,5 @@
 import csv
+import math
 
 def get_file_path():
     file_path = ""
@@ -77,12 +78,15 @@ def main():
                 match comparison:
                     case 1:
                         print("1")
-                        perc = country2_pop_int / country1_pop_int * 100
-                        print(perc)
+                        perc = country1_pop_int / country2_pop_int * 100 - 100
+                        perc = math.floor(perc * 100)/100.0
+                        print(country1 + " has " + str(perc) + '%' + " bigger population than " + country2 + ".")
                     case 2:
-                        print("2")
+                        perc = country2_pop_int / country1_pop_int * 100 - 100
+                        perc = math.floor(perc * 100)/100.0
+                        print(country2 + " has " + str(perc) + '%' + " bigger population than " + country1 + ".")
                     case 3:
-                        print("3")
+                        print("These two countries have similar population")
                     case _:
                         print("Error")
             case "c":
