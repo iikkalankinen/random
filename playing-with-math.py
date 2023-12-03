@@ -25,8 +25,9 @@ def calculate_circle_area():
 def calculate_circle_radius():
     print("To calculate the circle's radius, I need one of the following values: diameter, area, circumference")
     user_input = ""
+    did_calculate = False
     while(user_input != "q"):
-        user_input = input("Choose one value that you already know: a) diameter, b) area, c) circumference, q) don't have any of those: ")
+        user_input = input("Choose one value that you already know: a) diameter, b) area, c) circumference, q) quit or don't have any of those: ")
         user_input = user_input.lower()
         match user_input:
             case "a":
@@ -37,6 +38,7 @@ def calculate_circle_radius():
                         diameter = get_value_from_user("circle's radius", "diameter")
                 result = int(diameter)/2
                 result = math.floor(result * 100)/100.0
+                did_calculate = True
                 print("The radius for a circle with the diameter of " + diameter + " is " + str(result))
             case "b":
                 area = get_value_from_user("circle's radius", "area")
@@ -46,6 +48,7 @@ def calculate_circle_radius():
                         area = get_value_from_user("circle's radius", "area")
                 result = math.sqrt(int(area) / math.pi)
                 result = math.floor(result * 100)/100.0
+                did_calculate = True
                 print("The radius for a circle with the area of " + area + " is " + str(result))
             case "c":
                 circumference = get_value_from_user("circle's radius", "circumference")
@@ -55,9 +58,13 @@ def calculate_circle_radius():
                         circumference = get_value_from_user("circle's radius", "circumference")
                 result = int(circumference) / (2 * math.pi)
                 result = math.floor(result * 100)/100.0
+                did_calculate = True
                 print("The radius for a circle with the circumference of " + circumference + " is " + str(result))
             case "q":
-                print("Can't calculate circle's radius. Returning to the main menu.")
+                if did_calculate == False:
+                    print("Can't calculate circle's radius. Returning to the main menu.")
+                else:
+                    print("Returning to main menu.")
             case _:
                 print("Sorry, I didn't understand that, please try again.")
 
