@@ -1,8 +1,15 @@
 import math
 
 def get_selection():
+    features = {
+    "a": "Calculate circle's area",
+    "b": "Calculate circle's radius",
+    "q": "Quit"
+    }
     user_selection = ""
-    user_selection = input("Choose one\n a) Calculate circle's area\n b) Calculate circle's radius\n q) Quit\nYour choise: ")
+    for key, value in features.items():
+        print(f"{key}: {value}")
+    user_selection = input("Choose one: ")
     return user_selection.lower()
 
 def calculate_circle_area():
