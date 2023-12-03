@@ -20,7 +20,46 @@ def calculate_circle_area():
             radius = get_value_from_user("circle's area", "radius")
     result = math.pi * int(radius) ** 2
     result = math.floor(result * 100)/100.0
-    print("The area for a cirlce with the radius of " + radius + " is " + str(result))
+    print("The area for a circle with the radius of " + radius + " is " + str(result))
+
+def calculate_circle_radius():
+    print("To calculate the circle's radius, I need one of the following values: diameter, area, circumference")
+    user_input = ""
+    while(user_input != "q"):
+        user_input = input("Choose one value that you already know: a) diameter, b) area, c) circumference, q) don't have any of those: ")
+        user_input = user_input.lower()
+        match user_input:
+            case "a":
+                diameter = get_value_from_user("circle's radius", "diameter")
+                if diameter.isnumeric() == False:
+                    while(diameter.isnumeric() == False):
+                        print("Let's try again")
+                        diameter = get_value_from_user("circle's radius", "diameter")
+                result = int(diameter)/2
+                result = math.floor(result * 100)/100.0
+                print("The radius for a circle with the diameter of " + diameter + " is " + str(result))
+            case "b":
+                area = get_value_from_user("circle's radius", "area")
+                if area.isnumeric() == False:
+                    while(area.isnumeric() == False):
+                        print("Let's try again")
+                        area = get_value_from_user("circle's radius", "area")
+                result = math.sqrt(int(area) / math.pi)
+                result = math.floor(result * 100)/100.0
+                print("The radius for a circle with the area of " + area + " is " + str(result))
+            case "c":
+                circumference = get_value_from_user("circle's radius", "circumference")
+                if circumference.isnumeric() == False:
+                    while(circumference.isnumeric() == False):
+                        print("Let's try again")
+                        circumference = get_value_from_user("circle's radius", "circumference")
+                result = int(circumference) / (2 * math.pi)
+                result = math.floor(result * 100)/100.0
+                print("The radius for a circle with the circumference of " + circumference + " is " + str(result))
+            case "q":
+                print("Can't calculate circle's radius. Returning to the main menu.")
+            case _:
+                print("Sorry, I didn't understand that, please try again.")
 
 def get_value_from_user(what_is_calculated, value_to_ask):
     ret_value = input("To calculate " + what_is_calculated + ", I need a value for " + value_to_ask + ". Your input: ")
@@ -35,7 +74,7 @@ if __name__ == "__main__":
             case "a":
                 calculate_circle_area()
             case "b":
-                print("b")
+                calculate_circle_radius()
             case "c":
                 print(selection + "doesn't yet do anything.")
             case "q":
