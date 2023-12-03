@@ -19,8 +19,7 @@ def get_value_from_user(what_is_calculated, value_to_ask):
     ret_value = input("To calculate " + what_is_calculated + ", I need a value for " + value_to_ask + ". Your input: ")
     return ret_value
 
-
-def main():
+if __name__ == "__main__":
     print("Let's start!\n")
     selection = ""
     while (selection != "q"):
@@ -36,6 +35,3 @@ def main():
                 print("Exiting the program.")
             case _:
                 print("Sorry, I didn't understand that, please try again.")
-
-if __name__ == "__main__":
-    main()
