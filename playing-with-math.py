@@ -70,7 +70,32 @@ def calculate_circle_radius():
                 print("Sorry, I didn't understand that, please try again.")
 
 def calculate_circle_circumference():
-    pass
+    start_values = {
+        "a": "Area",
+        "b": "Radius",
+        "c": "Diameter",
+        "x": "Don't have any of the above",
+        "q": "Return to main menu"
+    }
+    user_input = ""
+    while(user_input != "q" and user_input != "x"):
+        for key, value in start_values.items():
+            print(f"{key}: {value}")
+        user_input = input("Choose one: ")
+        user_input = user_input.lower()
+        match user_input:
+            case "a":
+                print("a")
+            case "b":
+                print("b")
+            case "c":
+                print("c")
+            case "x":
+                print("x")
+            case "q":
+                print("q")
+            case _:
+                print("Sorry, I didn't understand that, please try again.")
 
 def get_value_from_user(what_is_calculated, value_to_ask):
     ret_value = input("To calculate " + what_is_calculated + ", I need a value for " + value_to_ask + ". Your input: ")
@@ -87,7 +112,7 @@ if __name__ == "__main__":
             case "b":
                 calculate_circle_radius()
             case "c":
-                print(selection + " is still getting programmed.")
+                calculate_circle_circumference()
             case "q":
                 print("Exiting the program.")
             case _:
